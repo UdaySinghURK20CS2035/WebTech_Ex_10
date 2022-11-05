@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exp 10 - Q 2 </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script>
+        var app = angular.module('myapp', ['ngRoute']);
+        app.config(function($routeProvider) {
+            $routeProvider.when('/urk20cs2037', {
+                templateUrl : 'urk20cs2037.html'
+            }).when('/urk20cs2035', {
+                templateUrl : 'EX10_urk20cs2035.html'
+            }).when('/urk20cs2055', {
+                templateUrl : 'urk20cs2055.html'
+            }).when('/urk20cs2042', {
+                templateUrl : 'urk20cs2042.html'
+            })
+        })
+    </script>
+</head>
+<body ng-app="myapp">
+    <div>
+        <h2> Exp 10 - Q 2 </h2>
+        <br> <hr> <br>
+        <h3> Select a Registration number</h3>
+        <a href="#!urk20cs2035"> URK20CS2035</a> <br><br>
+        <a href="#!urk20cs2037"> URK20CS2037</a> <br><br>
+        <a href="#!urk20cs2042"> URK20CS2042</a> <br><br>
+        <a href="#!urk20cs2055"> URK20CS2055</a> <br>
+    </div>
+    <div ng-view></div>
+</body>
+</html>

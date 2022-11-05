@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exp 10 - Q 1 </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        var app = angular.module('myapp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.success = function () {
+                alert('Form submitted successfully!');
+            }
+        })
+    </script>
+</head>
+<body ng-app="myapp" ng-controller="myCtrl">
+    <h2 style="text-align:center; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"> Christmas Megaplay 2022 registration form </h2>
+    <div style="position: relative; left: 35%">
+    <form name='myform'>
+        
+        Name: <span style="color:red"> * </span>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <input type='text' name="user_name" ng-model="name" required >
+        
+        <span style="color:red" ng-show="myform.user_name.$dirty && myform.user_name.$invalid"> Name is required.</span>
+        <span style="color: green" ng-show="myform.user_name.$valid && myform.user_name.$dirty"> ✓ </span>
+        <br> <br>
+
+        Email: <span style="color:red"> * </span>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <input type="email" name="user_email" ng-model="email" required>
+        <span style="color:red" ng-show="myform.user_email.$dirty && myform.user_email.$invalid || myform.user_email.$error.email"> Please enter a valid email </span>
+        <span style="color:green" ng-show="myform.user_email.$dirty && myform.user_email.$valid"> ✓ </span>
+        <br> <br>
+
+        Age: <span style="color:red"> * </span>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <input type="number" name="user_age" ng-model="age" required>
+        <span style="color:red" ng-show="myform.user_age.$dirty && myform.user_age.$invalid"> Age is required </span>
+        <span style="color:green" ng-show="myform.user_age.$dirty && myform.user_age.$valid"> ✓ </span>
+        <br> <br>
+
+        Mobile Number: <span style="color:red"> * </span>
+        &nbsp; &nbsp; 
+        <input type="number" name="user_phone" ng-model="phone" required pattern="[0-9]{10}">
+        <span style="color:red" ng-show="myform.user_phone.$dirty && myform.user_phone.$invalid"> Phone number is required </span>
+        <span style="color:green" ng-show="myform.user_phone.$dirty && myform.user_phone.$valid"> ✓ </span>
+        <br> <br>
+
+        Gender: <span style="color:red"> * </span>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <input type="radio" id="male" name="user_gender" value="male" required> Male
+        <input type="radio" id="female" name="user_gender" value="female" required> Female
+        <!--span style="color:red" ng-show="myform.user_gender.$pristine || myform.user_gender.$invalid"> Gender is required </span-->
+        <span style="color:red" ng-show="myform.user_gender.$error.required"> Gender is required </span>
+        <span style="color:green" ng-show="myform.user_gender.$dirty"> ✓ </span>
+        <br> <br>
+
+        Department: <span style="color:red"> * </span>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <select name="user_dept" id="dept" required>
+            <option value="null" selected disabled> Choose your department </option>
+            <option value="Computer Science and Engineering"> Computer Science and Engineering </option>
+            <option value="Electronics and Communication Engineering"> Electronics and Communication Engineering </option>
+            <option value="Aerospace Engineering"> Aerospace Engineering </option>    
+        </select>
+        <span style="color:red" ng-show="myform.user_dept.$error.required"> Please select your state </span>
+        <span style="color:green" ng-show="myform.user_dept.$dirty"> ✓ </span>
+        <br> <br>
+
+        <button ng-disabled="myform.user_name.$invalid ||
+            myform.user_phone.$invalid ||
+            myform.user_email.$invalid ||
+            myform.user_gender.$error.required ||
+            myform.user_dept.$error.required " ng-click="success()"> submit </button>
+        
+        <!-- myform.user_gender.$invalid && -->
+    </form>
+    </div>
+</body>
+</html>
